@@ -1,11 +1,11 @@
 {
   "name": "nodebb-plugin-spaffnerds",
-  "version": "0.2.3",
+  "version": "0.9.8",
   "description": "Killing It",
   "main": "library.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/psychobunny/nodebb-plugin-quickstart"
+    "url": "https://github.com/codysoule/node-bb-plugin-spaffnerds"
   },
   "keywords": [
   ],

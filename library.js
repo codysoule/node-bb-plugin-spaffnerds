@@ -29,7 +29,7 @@ var spaffnerds = {
 			for(n = 0; n < songnames.length; n++) //search and replace song names with links
 			{
 				current = songnames[n];
-				regexlook = RegExp(current, "ig")
+				regexlook = RegExp(current + "(?!])", "ig")
 				post = post.replace(regexlook, "[" + current + "]" + "(" + "https://spaffnerds.com/songs/" + songurls[n] + ")"); 
 			}
 			data.postData.content = post;
