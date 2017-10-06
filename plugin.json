@@ -1,0 +1,18 @@
+{
+	"id": "nodebb-plugin-spaffnerds",
+	"url": "https://spaffnerds.com/",
+	"library": "./library.js",
+	"hooks": [
+		{ "hook": "action:post.save", "method": "replaceText" }
+	],
+	"staticDirs": {
+		"static": "./static"
+	},
+	"less": [
+	],
+	"scripts": [
+		"static/lib/main.js"
+	],
+	"acpScripts": [
+	]
+}
