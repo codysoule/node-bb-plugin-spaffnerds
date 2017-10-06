@@ -3,7 +3,7 @@
 	"url": "https://spaffnerds.com/",
 	"library": "./library.js",
 	"hooks": [
-		{ "hook": "action:post.save", "method": "replaceText" }
+		{ "hook": "filter:parse.post", "method": "replaceText" }
 	],
 	"staticDirs": {
 		"static": "./static"

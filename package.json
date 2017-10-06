@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-spaffnerds",
-  "version": "0.9.8",
+  "version": "1.0.0",
   "description": "Killing It",
   "main": "library.js",
   "repository": {
