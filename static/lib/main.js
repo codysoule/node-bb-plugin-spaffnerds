@@ -12,5 +12,5 @@ $(document).ready(function() {
 		$(document).ready();			Fired when the DOM is ready
 		$(window).on('action:ajaxify.end', function(data) { ... });			"data" contains "url"
 	*/
-
+	console.log('nodebb-plugin-spaffnerds: loaded');
 });

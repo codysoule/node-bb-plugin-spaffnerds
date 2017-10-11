@@ -1,6 +1,6 @@
 {
   "name": "nodebb-plugin-spaffnerds",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Killing It",
   "main": "library.js",
   "repository": {
@@ -11,11 +11,11 @@
   ],
   "author": {
   },
-  "license": "spaffnerds copyright 2017",
+  "license": "Spaffnerds copyright 2017",
   "bugs": {
   },
   "readmeFilename": "README.md",
   "nbbpm": {
-    "compatibility": "^1.0.0 || ^1.5.0"
+    "compatibility": "^1.0.0 || ^1.5.0 || ^1.6.0"
   }
 }

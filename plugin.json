@@ -3,7 +3,21 @@
 	"url": "https://spaffnerds.com/",
 	"library": "./library.js",
 	"hooks": [
-		{ "hook": "filter:parse.post", "method": "replaceText" }
+		{ 
+			"hook": "filter:parse.raw", "method": "replaceSongNames"
+		},
+		{
+			"hook": "filter:parse.post", "method": "replaceSongNames"
+		},
+		{
+			"hook": "filter:post.save", "method": "replaceSongNames"
+		},
+		{
+			"hook": "static:app.load", "method": "init"
+		},
+		{
+			"hook": "filter:admin.header.build", "method": "addAdminNavigation"
+		}
 	],
 	"staticDirs": {
 		"static": "./static"

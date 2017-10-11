@@ -1,10 +1,43 @@
 "use strict";
 
-var spaffnerds = {
+var spaffnerds = {}
 
-	replaceText: function(postData) {
+//initialize
+spaffnerds.init = function(params, callback) { 
+	var router = params.router,
+		hostMiddleware = params.middleware,
+		hostControllers = params.controllers;
+		
+	// We create two routes for every view. One API call, and the actual route itself.
+	// Just add the buildHeader middleware to your route and NodeBB will take care of everything for you.
+
+	router.get('/admin/plugins/spaffnerds', hostMiddleware.admin.buildHeader, controllers.renderAdminPage);
+	router.get('/api/admin/plugins/spaffnerds', controllers.renderAdminPage);
+
+	callback();
+};
+
+//create admin view
+spaffnerds.addAdminNavigation = function(header, callback) {
+	header.plugins.push({
+		route: '/plugins/spaffnerds',
+		icon: 'fa-tint',
+		name: 'Spaffnerds'
+	});
+
+	callback(null, header);
+};
+
+//replace song names with links
+spaffnerds.replaceSongNames = function(data, callback)	{
+
+	var post = data.postData.content; //get post data
+	alert(post);
 	
-		data.postData.content = parser.render(data.postData.content); //get post data
+	if(!post)
+	{
+		alert("There is no text to parse here!");
+	} else {
 		
 		var songnames; //initialize
 		var songurls;
@@ -24,17 +57,33 @@ var spaffnerds = {
 		});
 		
 		function replace() {
-			var post = data.postData.content;
 			var regexlook;
 			for(n = 0; n < songnames.length; n++) //search and replace song names with links
 			{
-				current = songnames[n];
-				regexlook = RegExp(current + "(?!])", "ig")
-				post = post.replace(regexlook, "[" + current + "]" + "(" + "https://spaffnerds.com/songs/" + songurls[n] + ")"); 
+				regexlook = RegExp(songnames[n] + "(?!])", "ig")
+				post = post.replace(regexlook, "[" + songnames[n] + "]" + "(" + "https://spaffnerds.com/songs/" + songurls[n] + ")"); 
 			}
 			data.postData.content = post;
 		}
 	}
+	callback(null, data);
+};
+
+//add show date to your post
+spaffnerds.addShowDate = function(postData, callback) {
+
+	var post = data.postData.content; //get post data
+	var datelist;
+	
+		//look for dates and put into array
+	datelist = post.match(/(\d\d\d\d-\d\d-\d\d)(?!(]|[)]))/g);
+	
+	for(i=0; i < datelist.length; i++)
+	{
+		post = post.replace(/(\d\d\d\d-\d\d-\d\d)(?!(]|[)]))/g, "[" + datelist[i] + "]" + "(" + "https://spaffnerds.com/shows/" + datelist[i] + ")");
+	}
+	
+	
 };
 
 module.exports = spaffnerds;
